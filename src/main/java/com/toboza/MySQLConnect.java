@@ -65,11 +65,11 @@ public class MySQLConnect {
         return listaItemow;
     }
 
-    public void putItem(String owner, Integer item_id, Double qty) {
+    public void putItem(String owner, Integer item_id, Double qty, Double price) {
         connect();
         try {
-            String sql = "INSERT into koszyk (owner,item_id,item_qty,koszyk_value)" +
-                    "values ('" + owner + "','" + item_id + "','" + qty + "','0.0')";
+            String sql = "INSERT into koszyk (owner,item_id,item_qty,items_value)" +
+                    "values ('" + owner + "','" + item_id + "','" + qty + "',' "+ price + "')";
             Statement statement = connection.createStatement();
             statement.execute(sql);
             statement.close();

@@ -32,26 +32,27 @@
 
 <h3><p> Rzeczy w sklepie :</p></h3>
 <form action="BuyServlet" method="post">
-<%
-    MySQLConnect conn = new MySQLConnect();
+    <%
+        MySQLConnect conn = new MySQLConnect();
 
-    List<Item> lista = conn.getItemBase();
-    %> <input name="owner" type=hidden value="<%=userName%>" /><%
-    for (Item x : lista) { %> <br><input  name="<%=x.getId()%>" type="text" id=<%=x.getId()%>  cols="1" rows="1"/>
-                                   <%
-        out.println(x.toString());
-    }
+        List<Item> lista = conn.getItemBase();
+    %> <input name="owner" type=hidden value="<%=userName%>"/><%
+    for (Item x : lista) { %> <br><input name="<%=x.getId()%>" type="text" id=<%=x.getId()%>  cols="1" rows="1"/>
+    <input name="<%=x.getId()%>" type=hidden value="<%=x.getCena()%>"/>
+    <%
+            out.println(x.toString());
+        }
 
-    ;%>
-<BR>
-<input type="submit"  value="Kupuję!"/>
+        ;%>
+    <BR>
+    <input type="submit" value="Kupuję!"/>
 </form>
 <%--<%--%>
-        <%--for (String atrib : request.getParameterValues("Kup")) {--%>
-        <%--int attribNumber = Integer.valueOf(atrib);--%>
-        <%--conn.putItem(userName,attribNumber,lista.get(attribNumber).getCena());--%>
+<%--for (String atrib : request.getParameterValues("Kup")) {--%>
+<%--int attribNumber = Integer.valueOf(atrib);--%>
+<%--conn.putItem(userName,attribNumber,lista.get(attribNumber).getCena());--%>
 
-    <%--}--%>
+<%--}--%>
 <%--%>--%>
 
 </body>

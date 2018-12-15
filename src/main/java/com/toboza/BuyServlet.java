@@ -22,8 +22,7 @@ public class BuyServlet extends HttpServlet {
         while (e.hasMoreElements()) {
             String param_name = e.nextElement();
             if (!req.getParameter(param_name).isEmpty()) {
-                System.out.println(param_name + " " + req.getParameter(param_name));
-                sql.putItem(owner, Integer.valueOf(param_name), Double.valueOf(req.getParameter(param_name)));
+                sql.putItem(owner, Integer.valueOf(param_name), Double.valueOf(req.getParameter(param_name)),0.0);
 
             }
 
