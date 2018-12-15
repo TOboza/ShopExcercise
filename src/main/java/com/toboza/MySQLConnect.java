@@ -1,6 +1,5 @@
 package com.toboza;
 
-import java.io.PrintWriter;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +52,7 @@ public class MySQLConnect {
                 String uom = resultSet.getString("uom");
                 double cena = resultSet.getDouble("cena");
 
-                Item tempItem = new Item(id,refka,nazwa,uom,cena);
+                Item tempItem = new Item(id, refka, nazwa, uom, cena);
                 listaItemow.add(tempItem);
             }
             statement.close();
@@ -66,11 +65,11 @@ public class MySQLConnect {
         return listaItemow;
     }
 
-    public void putItem(String owner ,Integer item_id,Double qty) {
+    public void putItem(String owner, Integer item_id, Double qty) {
         connect();
         try {
             String sql = "INSERT into koszyk (owner,item_id,item_qty,koszyk_value)" +
-                    "values ('"+owner+"','"+item_id+"','"+qty+"','0.0')";
+                    "values ('" + owner + "','" + item_id + "','" + qty + "','0.0')";
             Statement statement = connection.createStatement();
             statement.execute(sql);
             statement.close();
@@ -80,7 +79,6 @@ public class MySQLConnect {
             e.printStackTrace();
         }
     }
-
 
 
 }
