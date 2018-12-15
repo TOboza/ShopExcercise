@@ -34,9 +34,11 @@
 <form action="BuyServlet" method="post">
 <%
     MySQLConnect conn = new MySQLConnect();
-    String owner = userName;
+
     List<Item> lista = conn.getItemBase();
-    for (Item x : lista) { %> <br> <input  name="<%=x.getId()%>" id=<%=x.getId()%>  cols="1" rows="1"/> <%
+    %> <input name="owner" type=hidden value="<%=userName%>" /><%
+    for (Item x : lista) { %> <br><input  name="<%=x.getId()%>" type="text" id=<%=x.getId()%>  cols="1" rows="1"/>
+                                   <%
         out.println(x.toString());
     }
 
